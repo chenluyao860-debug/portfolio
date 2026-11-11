@@ -1,0 +1,69 @@
+*{box-sizing:border-box}body{margin:0;padding:0 clamp(20px,4.2vw,68px);font-family:Arial,Helvetica,sans-serif;color:#151515}a{color:inherit;text-decoration:none}header,footer{display:flex;align-items:center;justify-content:space-between;min-height:62px;font-size:13px;font-weight:600}header{border-bottom:1px solid #e8e8e8}header nav{display:flex;gap:18px}.heading{padding:clamp(48px,9vh,120px) 0 28px}.heading p{font-size:12px;color:#777;margin:0 0 12px}.heading h1{font-size:clamp(48px,10vw,140px);line-height:.95;letter-spacing:-.07em;margin:0 0 20px}.heading>a{font-size:12px;border-bottom:1px solid #aaa;padding-bottom:4px}.hero{display:block;width:100%;height:auto;max-height:82vh;object-fit:contain;object-position:center;background:#f7f6f3}.gallery{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px}.gallery figure{margin:0}.gallery img{display:block;width:100%;height:auto}.gallery figure:first-child:last-child{grid-column:1/-1}footer{margin-top:70px;border-top:1px solid #e8e8e8;padding:18px 0}@media(max-width:620px){header{font-size:11px}.heading{padding-top:58px}.gallery{grid-template-columns:1fr}footer{font-size:11px}}
+header{display:grid;grid-template-columns:1fr 1fr 1fr}header>span{display:block}header nav{justify-self:end;font-size:clamp(14px,1.2vw,22px)}.heading{text-align:center;padding:clamp(18px,4vh,48px) 0 10px}.heading h1{font-size:clamp(64px,11vw,155px);font-weight:800;text-transform:uppercase}.hero,.gallery{width:min(100%,1160px);margin-left:auto;margin-right:auto}.gallery{gap:4px}.gallery img{width:100%}footer{position:fixed;bottom:0;left:clamp(20px,4.2vw,68px);right:clamp(20px,4.2vw,68px);border:0;margin:0;padding:16px 0;pointer-events:none}footer a{pointer-events:auto;font-size:clamp(14px,1.2vw,22px);font-weight:700}body{padding-bottom:65px}
+/* Hover blur on project navigation, matching the index behavior */
+header nav a,header>a,footer a,.heading>a{transition:filter .16s ease}
+header nav a:hover,header>a:hover,footer a:hover,.heading>a:hover,header nav a:focus-visible,header>a:focus-visible,footer a:focus-visible,.heading>a:focus-visible{filter:blur(2px)}
+header{font-size:16px;min-height:62px}header nav{font-size:16px;gap:20px}header>a:last-child{font-size:16px;font-weight:600}
+header{display:flex;justify-content:space-between;gap:0}header .wordmark,header nav a,header>a:last-child{font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:600;line-height:1;letter-spacing:0}header nav{display:flex;gap:20px;justify-self:auto}
+@media(max-width:620px){header{font-size:16px}header .wordmark,header nav a,header>a:last-child{font-size:16px}}
+footer a{position:relative;display:block}footer .nav-preview{position:absolute;bottom:calc(100% + 14px);width:clamp(150px,20vw,300px);opacity:0;pointer-events:none;transition:opacity .2s ease}#previous .nav-preview{left:0}#next .nav-preview{right:0}footer .nav-preview img{display:block;width:100%;max-height:30vh;object-fit:contain;box-shadow:0 8px 30px #0002}footer a:hover .nav-preview,footer a:focus-visible .nav-preview{opacity:1}footer a:hover .nav-label{filter:blur(3px)}
+.gallery{display:block!important;columns:1!important;width:min(100%,1160px);margin:4px auto 0}.gallery figure{display:block;width:100%;margin:0 auto 4px;break-inside:avoid}.gallery img{display:block;width:100%;height:auto}.gallery figure:first-child:last-child{grid-column:auto}
+footer .nav-preview{display:block;visibility:hidden;z-index:8}footer a:hover .nav-preview,footer a:focus-visible .nav-preview{visibility:visible;opacity:1}
+.project-flash{position:relative;width:min(100%,1160px);height:clamp(240px,55vw,680px);margin:0 auto 5px;overflow:hidden;background:#111}.project-flash img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;animation:portfolio-flash 1.8s steps(1,end) infinite}.project-flash img:nth-child(1){animation-delay:0s}.project-flash img:nth-child(2){animation-delay:.18s}.project-flash img:nth-child(3){animation-delay:.36s}.project-flash img:nth-child(4){animation-delay:.54s}.project-flash img:nth-child(5){animation-delay:.72s}.project-flash img:nth-child(6){animation-delay:.9s}.project-flash img:nth-child(7){animation-delay:1.08s}.project-flash img:nth-child(8){animation-delay:1.26s}.project-flash img:nth-child(9){animation-delay:1.44s}.project-flash img:nth-child(10){animation-delay:1.62s}@keyframes portfolio-flash{0%,100%{opacity:0}8%,16%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.project-flash img{animation:none;opacity:0}.project-flash img:first-child{opacity:1}}
+.project-flash img{animation-delay:calc(var(--frame)*.16s)}
+.project-flash{background:transparent!important}.project-flash img{object-fit:cover!important}
+.project-flash img{animation:portfolio-flash-once calc(var(--frame-count,14)*.16s) steps(1,end) 1 forwards}
+@keyframes portfolio-flash-once{0%,100%{opacity:0}8%,16%{opacity:1}}
+.project-flash img{animation:portfolio-cycle 1.8s steps(1,end) infinite!important;animation-delay:calc(var(--frame)*.16s)!important}.project-flash img:last-child{animation:portfolio-title-hold .01s linear 1.8s forwards!important;opacity:0}@keyframes portfolio-title-hold{to{opacity:1}}@keyframes portfolio-cycle{0%,100%{opacity:0}8%,16%{opacity:1}}
+.project-flash img{object-fit:contain!important;inset:0;width:100%;height:100%;max-width:100%;max-height:100%}
+.heading p.project-role{margin-top:8px;color:#777;font-size:12px}
+/* Project detail image rhythm: one full-width image per row, without cropping */
+.project-flash{height:clamp(260px,54vw,680px);background:#f4f2ee!important}
+.project-flash img{object-fit:contain!important}
+.gallery{display:block!important;columns:1!important;width:min(100%,1160px);margin:4px auto 0}
+.gallery figure{display:block;width:100%;margin:0 auto 12px;break-inside:avoid}
+.gallery img{display:block;width:100%;height:auto;object-fit:contain}
+.heading .project-role{font-size:12px;color:#777}
+.project-flash{position:relative;height:clamp(260px,54vw,680px);overflow:hidden;background:#111!important}
+.project-flash>img{display:none!important;animation:none!important;opacity:0!important}
+.project-flash>img.is-visible{display:block!important;opacity:1!important}
+.project-flash .flash-title{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;padding:24px;background:#111;color:#fff;text-align:center;opacity:0;transition:opacity .2s ease}
+.project-flash .flash-title.is-visible{opacity:1}
+.project-flash .flash-title strong{font-size:clamp(24px,5vw,62px);line-height:1;letter-spacing:-.04em}
+.project-flash .flash-title span{font-size:clamp(13px,1.4vw,18px);color:#bbb}
+.project-flash .flash-frame{display:block!important;position:absolute;inset:0;width:100%;height:100%;object-fit:contain!important;opacity:1!important;animation:none!important}
+.project-flash .flash-frame[hidden]{display:none!important}
+
+/* Match the source-page aspect ratio to remove black framing around the opening flash. */
+.project-flash{height:auto!important;aspect-ratio:1600/1131;background:#fff!important;min-height:0!important}
+.project-flash .flash-frame{background:#fff!important}
+.project-flash .flash-title{background:#111!important}
+
+
+/* Small, independent character motions on the original artwork. */
+.hero,.gallery,.project-flash{width:min(100%,980px)!important;margin-left:auto!important;margin-right:auto!important}
+.heading h1{font-size:clamp(42px,7vw,96px)!important;line-height:.9!important}
+.sonder-moving-page{position:relative;isolation:isolate;overflow:hidden}
+.sonder-moving-page>img{display:block;width:100%;height:auto}
+.sonder-motion-overlay{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.sonder-actor{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:var(--h);display:block;transform-origin:center bottom;animation-duration:var(--duration);animation-delay:var(--delay);animation-timing-function:ease-in-out;animation-iteration-count:infinite;animation-direction:alternate;will-change:transform}
+.sonder-actor img{display:block;width:100%;height:100%;object-fit:fill}
+.motion-run{animation-name:sonder-run-cycle}
+.motion-bounce{animation-name:sonder-bounce-cycle}
+.motion-dance{animation-name:sonder-dance-cycle}
+.motion-wave{animation-name:sonder-wave-cycle}
+.motion-chair{animation-name:sonder-chair-cycle}
+.motion-rest{animation-name:sonder-rest-cycle}
+@keyframes sonder-run-cycle{from{transform:translate(-5px,1px) rotate(-1deg)}to{transform:translate(5px,-1px) rotate(1deg)}}
+@keyframes sonder-bounce-cycle{from{transform:translateY(1px)}to{transform:translateY(-7px)}}
+@keyframes sonder-dance-cycle{from{transform:translate(-2px,1px) rotate(-3deg)}to{transform:translate(2px,-1px) rotate(3deg)}}
+@keyframes sonder-wave-cycle{from{transform:rotate(-3deg) translateY(1px)}to{transform:rotate(3deg) translateY(-2px)}}
+@keyframes sonder-chair-cycle{from{transform:rotate(-1.5deg) translateY(1px)}to{transform:rotate(1.5deg) translateY(-1px)}}
+@keyframes sonder-rest-cycle{from{transform:translateY(1px) scale(.995)}to{transform:translateY(-2px) scale(1.005)}}
+@media(prefers-reduced-motion:reduce){.sonder-actor{animation:none!important;will-change:auto}}
+.project-end-card{width:min(100%,980px);min-height:52vh;margin:12px auto 0;padding:clamp(36px,8vw,96px);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:16px;background:#090909;color:#fff;text-align:center}
+.project-end-card h2{max-width:100%;margin:0;font-size:clamp(32px,7vw,88px);line-height:.98;letter-spacing:-.055em}
+.project-end-card p{margin:0;color:#ddd;font-size:clamp(13px,1.5vw,18px)}
+.gallery figure{width:100%;max-width:100%;margin-left:auto;margin-right:auto}
+.gallery figure img{display:block;width:100%;max-width:100%;height:auto;object-fit:contain;transform:none!important}
